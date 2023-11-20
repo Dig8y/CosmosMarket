@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  get 'bookings/new'
-=======
   devise_for :users
->>>>>>> 240beb54b842df7f7f7dc0a43913405699f2a405
+
   root to: "pages#home"
 
   resources :bookings
