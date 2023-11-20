@@ -1,3 +1,14 @@
-<%= render 'navbar' %>
-<h1>home</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1486393585019-c942d66e0b6f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <%= link_to  new_user_session_path do %>
+        <p class='btn-brown btn-relative' style="margin-left: 0;">Login</p>
+      <% end %>
+    <h1>Discover the Cosmos one step at a time.</h1>
+    <p>Change your life and discover the Cosmos.</p>
+      <%= link_to new_user_registration_path do %>
+        <p class='btn-brown' style="margin-left: 0;">Get Started</p>
+      <% end %>
+  </div>
+</div>
+  <h1>home</h1>
 <%= render 'footer' %>
