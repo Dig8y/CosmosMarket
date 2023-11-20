@@ -1,0 +1,7 @@
+<h1>Lands</h1>
+<ul>
+  <% @lands.each do |land| %>
+    <li><%= land.area %></li>
+    <li><%= land.address %></li>
+  <% end %>
+</ul>
