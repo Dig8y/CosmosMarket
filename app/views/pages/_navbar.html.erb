@@ -1,0 +1,25 @@
+<div class="navbar">
+  <div class="container d-flex jutify-content-between">
+    <div>
+      <h1>CosmosMarket</h1>
+    </div>
+    <div class="middle-nav-btn d-flex">
+      <div class="d-flex">
+        <%= link_to '$' do %>
+          <p class='area-btn'>Area</p>
+        <% end %>
+        <%= link_to '#' do %>
+          <p class='area-btn'>When</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="d-flex">
+      <%= link_to new_user_session_path do %>
+        <p class='btn-brown'>Sign in</p>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+        <p class='btn-brown'>Sign up</p>
+      <% end %>
+    </div>
+  </div>
+</div>
