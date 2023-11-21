@@ -1,12 +1,23 @@
 .showpage-large-img {
   width: 100%;
   height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .showpage-small-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sml-images-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
 }
 
 .favourite-button {
@@ -44,4 +55,8 @@
 .show-header {
   font-weight: 600;
   margin-top: 24px;
+}
+
+.form-container {
+  padding: 24px;
 }
