@@ -1,6 +1,6 @@
 .planet-background {
-  background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fgalaxy&psig=AOvVaw21kk-011PvgSuJyddyz-C7&ust=1700654563675000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCLCchIuG1YIDFQAAAAAdAAAAABAE') no-repeat center center fixed;
-  background-size: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("Galaxy.jpeg");
+  background-size: contain;
   min-height: 100vh;
   width: 100%;
   position: relative;
