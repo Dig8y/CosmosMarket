@@ -1,14 +1,69 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1486393585019-c942d66e0b6f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
   <div class="container">
-    <%= link_to  new_user_session_path do %>
-        <p class='btn-brown btn-relative' style="margin-left: 0;">Login</p>
-      <% end %>
     <h1>Discover the Cosmos one step at a time.</h1>
     <p>Change your life and discover the Cosmos.</p>
       <%= link_to new_user_registration_path do %>
-        <p class='btn-brown' style="margin-left: 0;">Get Started</p>
+        <p class="btn-brown-nav" style="">Get started</p>
       <% end %>
   </div>
 </div>
-  <h1>home</h1>
+<div class="section top-section">
+  <div class="container">
+    <h2>How it works</h2>
+    <div class="top-section-card-container">
+      <div class="top-section-card">
+        <div class="number-icon">1</div>
+        <p>Sign up and get started</p>
+      </div>
+      <div class="top-section-card">
+        <div class="number-icon">2</div>
+        <p>Tell us your species</p>
+      </div>
+      <div class="top-section-card">
+        <div class="number-icon">3</div>
+        <p>Search through the incredible planet selection</p>
+      </div>
+      <div class="top-section-card">
+        <div class="number-icon">4</div>
+        <p>Find your dream destination</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section middle-section">
+  <div class="container">
+    <h2>Why choose CosmosMarket?</h2>
+    <div class="middle-section-card-container">
+      <div class="middle-section-card">
+        <p>Visit land in the intergalactic space</p>
+      </div>
+      <div class="middle-section-card">
+        <p>Meet some aliens</p>
+      </div>
+      <div class="middle-section-card">
+        <p>Discover the meaning of life</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section bottom-section">
+  <div class="container">
+    <h4>"I's so happy I stayed here on this planet SK8-431 - perfect holiday planet!" - Jake, Earth</h4>
+    <p class="btn-brown-nav" style="">Get started</p>
+  </div>
+</div>
 <%= render 'footer' %>
+
+
+
+
+
+
+
+<!--banner-->
+<div class="banner-nav">
+  <div class="container banner-nav-items">
+    <h1>CosmosMarket</h1>
+    <p class="btn-brown-nav">Log in</p>
+  </div>
+</div>
