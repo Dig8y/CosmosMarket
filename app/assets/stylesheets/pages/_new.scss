@@ -1,0 +1,30 @@
+.planet-background {
+  background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fgalaxy&psig=AOvVaw21kk-011PvgSuJyddyz-C7&ust=1700654563675000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCLCchIuG1YIDFQAAAAAdAAAAABAE') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+}
+
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  border-radius: 5px;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+}
