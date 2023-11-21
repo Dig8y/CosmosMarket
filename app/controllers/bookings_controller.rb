@@ -6,11 +6,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = booking.new(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.land = @land
-    if @booking.save
-      redirect_to land_path(@land) # TODO: change to dashboard
+    @booking.user = current_user
+
+    if @booking.save!
+
+      redirect_to dashboard_path# TODO: change to dashboard
     else
+
       render :new, alert: "Booking not created", status: :unprocessable_entity
     end
   end
@@ -25,7 +29,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to land_path(@booking.land), , status: :see_other
+    redirect_to land_path(@booking.land), status: :see_other
   end
 
   private

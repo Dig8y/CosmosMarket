@@ -1,0 +1,16 @@
+
+
+.card {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-group-item {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
