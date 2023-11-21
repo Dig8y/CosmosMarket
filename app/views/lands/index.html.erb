@@ -1,18 +1,23 @@
 <%= render "pages/navbar" %>
 <h1></h1>
 
-
-
-<div class="container">
-  <div class="card">
-    <div class="card-body">
-      <ul class="list-group">
+  <div class="container">
+    <div class="cards-grid">
         <% @lands.each do |land| %>
-          <li class="list-group-item"><%= land.price %></li>
-          <li class="list-group-item"><%= land.address %></li>
-          <li class="list-group-item"><%= land.area %></li>
-        <% end %>
-      </ul>
+        <div class="mb-3">
+          <div class="card-planet">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png" />
+              <div class="card-planet-infos">
+                <div>
+                  <h2><%= land.address %></h2>
+                  <p><%= land.area %> Square feet</p>
+                  <p></p>
+                </div>
+                <h2 class="card-planet-pricing">500</h2>
+                <img src="" class="card-planet-user star-bordered" />
+              </div>
+            </div>
+        </div>
+          <% end %>
     </div>
   </div>
-</div>
