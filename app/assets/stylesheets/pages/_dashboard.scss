@@ -1,0 +1,19 @@
+.bookings, .booking-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  display: flex;
+  background-color: black;
+}
+
+.land-image {
+  width: 30%;
+  height: auto;
+  object-fit: cover;
+}
+
+.booking-details {
+  padding: 15px;
+  background: #fff;
+}
