@@ -1,7 +1,18 @@
-<h1>Lands</h1>
-<ul>
-  <% @lands.each do |land| %>
-    <li><%= land.area %></li>
-    <li><%= land.address %></li>
-  <% end %>
-</ul>
+<%= render "pages/navbar" %>
+<h1></h1>
+
+
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <ul class="list-group">
+        <% @lands.each do |land| %>
+          <li class="list-group-item"><%= land.price %></li>
+          <li class="list-group-item"><%= land.address %></li>
+          <li class="list-group-item"><%= land.area %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
