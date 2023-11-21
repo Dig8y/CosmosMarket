@@ -5,7 +5,9 @@
         <% @lands.each do |land| %>
         <div class="mb-3">
           <div class="card-planet">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png" />
+
+            <%= image_tag (land.images.first) %>
+
               <div class="card-planet-infos">
                 <div>
                   <h2><%= land.address %></h2>
