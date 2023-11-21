@@ -23,7 +23,12 @@ puts "destroying all land"
 Land.destroy_all
 puts "land destroyed"
 
-
+IMAGES = ['https://images.unsplash.com/photo-1532795077981-fc1c26555bd4?q=80&w=3020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+'https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+ 'https://images.unsplash.com/photo-1545156521-77bd85671d30?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+ 'https://images.unsplash.com/photo-1632395627727-3b97d0724814?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+ 'https://images.unsplash.com/photo-1632395627732-005012dbc286?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
 
 10.times do |i|
   user = User.new(
@@ -40,7 +45,8 @@ puts "land destroyed"
       area: rand(50..300),
       user_id: user.id,
       address: "#{Faker::Address.street_address}, #{Faker::Space.planet}",
-      local_attractions: local_attractions.sample
+      local_attractions: local_attractions.sample,
+      images: IMAGES.shuffle
     )
     land.save!
     puts "created land - #{land.address}"
