@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h2>Welcome, <%= current_user.first_name %>!</h2>
+  <div class="bookings">
+    <% @bookings.each do |booking| %>
+      <div class="booking-card">
+        <div class="booking-details">
+          <h3><%= booking.land.address %></h3>
+          <p><strong>Start Date:</strong> <%= booking.booking_start_date.strftime("%B %d, %Y") %></p>
+          <p><strong>End Date:</strong> <%= booking.booking_end_date.strftime("%B %d, %Y") %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
