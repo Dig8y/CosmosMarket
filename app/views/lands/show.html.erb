@@ -3,19 +3,15 @@
 <% planet = @land.address.split(' ').last %>
 <div class="container">
   <h2 class="show-header">Wonderful Retreat on <%= planet %></h2>
-  <div class='row'>
-    <div class='col-6 py-4'>
-      <img src="<%= @land.images[0]%>" alt="" class="showpage-large-img">
+  <div class='row mb-4'>
+    <div class='col-6'>
+        <div style="background-image: url(<%= @land.images[0] %>);" style="height: 100%;" class="showpage-large-img"></div>
     </div>
-    <div class='col-6 py-4'>
-      <div class="row">
+    <div class="sml-images-container col-6">
         <div style="background-image: url(<%= @land.images[1] %>);" class="showpage-small-img"></div>
-        <div style="background: url(<%= @land.images[2] %>)" class="showpage-small-img"></div>
-      </div>
-      <div class="row">
+        <div style="background-image: url(<%= @land.images[2] %>)" class="showpage-small-img"></div>
         <div style="background-image: url(<%= @land.images[3] %>)" class="showpage-small-img"></div>
         <div style="background-image: url(<%= @land.images[4] %>)" class="showpage-small-img"></div>
-      </div>
     </div>
   </div>
   <div class="row">
@@ -30,34 +26,39 @@
           <p>9 years of hosting</p>
         </div>
       </div>
-    </div>
     <div>
-      <div class="show-user-info">
-        <%= image_tag 'location_pin.png', :class => "avatar" %>
-        <div class="show-user-info-text">
-          <h6>Great location</h6>
-          <p>100% of recent guests gave the location a 5 star rating</p>
-        </div>
+    <div class="show-user-info">
+      <%= image_tag 'location_pin.png', :class => "avatar" %>
+      <div class="show-user-info-text">
+        <h6>Great location</h6>
+        <p>100% of recent guests gave the location a 5 star rating</p>
       </div>
-      <div class="show-user-info">
-        <%= image_tag 'key_icon.png', :class => "avatar" %>
-        <div class="show-user-info-text">
-          <h6>Great check-in experience</h6>
-          <p>100% of recent guests gave the check-in experience a 5 star rating</p>
-        </div>
+    </div>
+    <div class="show-user-info">
+      <%= image_tag 'key_icon.png', :class => "avatar" %>
+      <div class="show-user-info-text">
+        <h6>Great check-in experience</h6>
+        <p>100% of recent guests gave the check-in experience a 5 star rating</p>
       </div>
-      <div class="show-user-info">
-        <%= image_tag 'alien_icon.png', :class => "avatar" %>
-        <div class="show-user-info-text">
-          <h6>Extra-terrestrial friends welcome</h6>
-          <p>Bring your friends along to stay</p>
-        </div>
+    </div>
+    <div class="show-user-info">
+      <%= image_tag 'alien_icon.png', :class => "avatar" %>
+      <div class="show-user-info-text">
+        <h6>Extra-terrestrial friends welcome</h6>
+        <p>Bring your friends along to stay</p>
       </div>
+    </div>
+    </div>
     </div>
     <div class="col-5">
-
+      <div class="form-container">
+        <%= simple_form_for [@land, @booking] do |f| %>
+          <%= f.input :booking_start_date %>
+          <%= f.input :booking_end_date %>
+          <%= f.submit 'Create booking', class: 'btn btn-outline-success'%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 <%= render 'pages/footer' %>
-
