@@ -1,17 +1,30 @@
-
-<%= render 'pages/navbar' %>
+<% if user_signed_in?%>
+  <%= render 'pages/navbar_in_session'  %>
+<% else %>
+  <%= render 'pages/navbar' %>
+<% end %>
 <% planet = @land.address.split(' ').last %>
 <div class="container">
   <h2 class="show-header">Wonderful Retreat on <%= planet %></h2>
   <div class='row mb-4'>
     <div class='col-6'>
-        <div style="background-image: url(<%= @land.images[0] %>);" style="height: 100%;" class="showpage-large-img"></div>
+        <% if @land.photos.attached? %>
+          <% @url = cl_image_path @land.photos[0].key %>
+          <div style="background-image: url(<% cl_image_path @land.photos[0].key %>);" class="showpage-large-img"></div>
+        <% else %>
+          <div style="background-image: url(<%= @land.images[0] %>);" class="showpage-large-img"></div>
+        <% end %>
     </div>
     <div class="sml-images-container col-6">
-        <div style="background-image: url(<%= @land.images[1] %>);" class="showpage-small-img"></div>
-        <div style="background-image: url(<%= @land.images[2] %>)" class="showpage-small-img"></div>
-        <div style="background-image: url(<%= @land.images[3] %>)" class="showpage-small-img"></div>
-        <div style="background-image: url(<%= @land.images[4] %>)" class="showpage-small-img"></div>
+        <% if @land.photos.attached? %>
+          <% @land.photos.each do |photo| %>
+            <div style="background-image: url(<%= cl_image_path photo.key %>);" class="showpage-small-img"></div>
+          <% end %>
+        <% else %>
+          <% @land.images.reverse.take(4).each do |image| %>
+             <div style="background-image: url(<%= image %>);" class="showpage-small-img"></div>
+            <% end %>
+        <% end %>
     </div>
   </div>
   <div class="row">
@@ -52,10 +65,11 @@
     </div>
     <div class="col-5">
       <div class="form-container">
+      <h3>Check Availability</h3>
         <%= simple_form_for [@land, @booking] do |f| %>
           <%= f.input :booking_start_date %>
           <%= f.input :booking_end_date %>
-          <%= f.submit 'Create booking', class: 'btn btn-outline-success'%>
+          <%= f.submit 'Create booking', class: 'btn btn-success'%>
         <% end %>
       </div>
     </div>

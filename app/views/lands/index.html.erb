@@ -1,27 +1,29 @@
-<%= render "pages/navbar" %>
-<h1></h1>
-  <div class="container">
-    <div class="cards-grid">
-        <% @lands.each do |land| %>
-        <div class="mb-3">
-          <div class="card-planet">
-            <% if land.images.any? %>
-              <%= image_tag (land.images.first) %>
-            <% else %>
-              <p>Nothing here yet</p>
-            <% end %>
 
-              <div class="card-planet-infos">
-                <div>
-                  <h2><%= land.address %></h2>
-                  <p><%= land.area %> Square feet</p>
-                  <p></p>
+<% if user_signed_in?%>
+  <%= render 'pages/navbar_in_session'  %>
+<% else %>
+  <%= render 'pages/navbar' %>
+<% end %>
+
+<div class="container">
+  <div class="cards-grid">
+      <% @lands.each do |land| %>
+        <%= link_to land_path(land) do %>
+          <div class="mb-3">
+            <div class="card-planet">
+              <%= image_tag (land.images.first) %>
+                <div class="card-planet-infos">
+                  <div>
+                    <h2><%= land.address %></h2>
+                    <p><%= land.area %> Square feet</p>
+                    <p></p>
+                  </div>
+                  <h2 class="card-planet-pricing">§500</h2>
+                  <img src="" class="card-planet-user star-bordered" />
                 </div>
-                <h2 class="card-planet-pricing">500</h2>
-                <img src="" class="card-planet-user star-bordered" />
-              </div>
             </div>
-        </div>
-          <% end %>
-    </div>
+          </div>
+        <% end %>
+      <% end %>
   </div>
+</div>

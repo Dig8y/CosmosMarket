@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Discover the Cosmos one step at a time.</h1>
     <p>Change your life and discover the Cosmos.</p>
-      <%= link_to new_user_registration_path do %>
+      <%= link_to lands_path do %>
         <p class="btn-brown-nav" style="">Get started</p>
       <% end %>
   </div>
@@ -49,7 +49,9 @@
 <div class="section bottom-section">
   <div class="container">
     <h4>"I's so happy I stayed here on this planet SK8-431 - perfect holiday planet!" - Jake, Earth</h4>
-    <p class="btn-brown-nav" style="">Get started</p>
+    <%= link_to lands_path do %>
+        <p class="btn-brown-nav" style="">Get started</p>
+    <% end %>
   </div>
 </div>
 <%= render 'footer' %>
@@ -64,6 +66,19 @@
 <div class="banner-nav">
   <div class="container banner-nav-items">
     <h1>CosmosMarket</h1>
-    <p class="btn-brown-nav">Log in</p>
+    <div>
+    <% if user_signed_in? %>
+      <%= link_to dashboard_path do %>
+        <i class="fa-solid fa-user avatar-icon"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+          <p class="btn-brown-nav">Log in</p>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+          <p class="btn-brown-nav">Sign up</p>
+      <% end %>
+    <% end %>
+    </div>
   </div>
 </div>
