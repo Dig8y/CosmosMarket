@@ -34,15 +34,22 @@
   <div class="container">
     <h2>Why choose CosmosMarket?</h2>
     <div class="middle-section-card-container">
+        <% @lands.each do |land| %>
       <div class="middle-section-card">
-        <p>Visit land in the intergalactic space</p>
+        <div class="card-planet">
+                <div class="card-planet-infos">
+                  <div>
+                    <%= raise %>
+                    <h2><%= land.address %></h2>
+                    <p><%= land.area %> Square feet</p>
+                  </div>
+                  <h2 class="card-planet-pricing">§500</h2>
+                  <img src="" class="card-planet-user star-bordered" />
+                </div>
+            </div>
       </div>
-      <div class="middle-section-card">
-        <p>Meet some aliens</p>
-      </div>
-      <div class="middle-section-card">
-        <p>Discover the meaning of life</p>
-      </div>
+      <% end %>
+
     </div>
   </div>
 </div>
