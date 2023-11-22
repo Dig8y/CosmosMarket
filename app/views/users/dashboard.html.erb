@@ -15,7 +15,7 @@
     <div class="booking-cards-container">
       <% current_user.lands.each do |land| %>
       <div class="booking-card">
-          <div class="booking-card-img" style="background-image: url(<%=land.images[0]%>)"></div>
+          <div class="booking-card-img" style="background-image: url(<%= cl_image_path land.photos.first.key %>)"></div>
           <div class="booking-card-top-info">
             <div>
               <p><%= land.address %></p>
@@ -37,7 +37,10 @@
         <h2>Welcome <%= current_user.first_name %></h2>
         <h5>Species: <%= current_user.species %></h5>
       </div>
-      <h4 class="btn btn-create">Find another booking</h4>
+      <%= link_to lands_path do %>
+        <h4 class="btn btn-create">Find another booking</h4>
+      <% end %>
+
     </div>
 
     <h4>Future Bookings</h4>
