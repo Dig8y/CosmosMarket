@@ -1,5 +1,8 @@
-
-<%= render 'pages/navbar' %>
+<% if user_signed_in?%>
+  <%= render 'pages/navbar_in_session'  %>
+<% else %>
+  <%= render 'pages/navbar' %>
+<% end %>
 <% planet = @land.address.split(' ').last %>
 <div class="container">
   <h2 class="show-header">Wonderful Retreat on <%= planet %></h2>
