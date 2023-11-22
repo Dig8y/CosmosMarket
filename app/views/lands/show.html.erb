@@ -9,10 +9,10 @@
   <div class='row mb-4'>
     <div class='col-6'>
         <% if @land.photos.attached? %>
-          <% @url = cl_image_path @land.photos[0].key %>
-          <div style="background-image: url(<% cl_image_path @land.photos[0].key %>);" class="showpage-large-img"></div>
+          <div style="background-image: url(<%= cl_image_path @land.photos.first.key %>);" class="showpage-large-img"></div>
         <% else %>
-          <div style="background-image: url(<%= @land.images[0] %>);" class="showpage-large-img"></div>
+          <!--<div style="background-image: url(<%= @land.images[0] %>);" class="showpage-large-img"></div>-->
+          <p>nothing here yet</p>
         <% end %>
     </div>
     <div class="sml-images-container col-6">

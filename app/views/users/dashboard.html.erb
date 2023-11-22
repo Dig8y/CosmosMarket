@@ -97,7 +97,7 @@
                 <h3><%= booking.land.address %></h3>
                 <p><strong>Start Date:</strong> <%= booking.booking_start_date.strftime("%B %d, %Y") %></p>
                 <p><strong>End Date:</strong> <%= booking.booking_end_date.strftime("%B %d, %Y") %></p>
-                <p><%= booking.land.photos.first %></p>
+                 <div style="background-image: url(<%= booking.land.images.first %>);" class="showpage-large-img"></div>
               </div>
             </div>
         </div>
