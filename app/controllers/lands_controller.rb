@@ -25,7 +25,7 @@ class LandsController < ApplicationController
   private
 
   def land_params
-    params.require(:land).permit(:area, :address, :local_attractions)
+    params.require(:land).permit(:area, :address, :local_attractions, photos: [])
   end
 
 end
