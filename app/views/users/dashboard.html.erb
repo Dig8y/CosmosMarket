@@ -1,4 +1,87 @@
-<div class="banner">
+<%= render '/pages/navbar_in_session' %>
+<div class="container">
+  <% if current_user.species == 'martian' %>
+    <div class="dash-header">
+      <div>
+        <h2>Welcome <%= current_user.first_name %></h2>
+        <h5>Species: <%= current_user.species %></h5>
+      </div>
+      <%= link_to new_land_path do %>
+        <h4 class="btn btn-create">Create new planet</h4>
+      <% end %>
+    </div>
+
+    <h4>My planets</h4>
+    <div class="booking-cards-container">
+      <% current_user.lands.each do |land| %>
+      <div class="booking-card">
+          <div class="booking-card-img" style="background-image: url(<%=land.images[0]%>)"></div>
+          <div class="booking-card-top-info">
+            <div>
+              <p><%= land.address %></p>
+              <p><%= land.local_attractions %></p>
+            </div>
+          </div>
+          <div class="booking-card-bot-info">
+            <div>
+              <p class="btn btn-card-grey">Edit</p>
+            </div>
+            <p>Cost per night</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% elsif current_user.species == 'human' %>
+    <div class="dash-header">
+      <div>
+        <h2>Welcome <%= current_user.first_name %></h2>
+        <h5>Species: <%= current_user.species %></h5>
+      </div>
+      <h4 class="btn btn-create">Find another booking</h4>
+    </div>
+
+    <h4>Future Bookings</h4>
+    <div class="booking-cards-container">
+      <% current_user.bookings.each do |booking|%>
+        <div class="booking-card">
+          <div class="booking-card-img" style="background-image: url(<%=booking.land.images[0]%>)"></div>
+          <div class="booking-card-top-info">
+            <div>
+              <p><%= booking.land.address %></p>
+              <p><%= booking.land.local_attractions %></p>
+            </div>
+            <div>
+              <p><%= booking.booking_start_date %></p>
+              <p><%= booking.booking_end_date %></p>
+            </div>
+          </div>
+          <div class="booking-card-bot-info">
+            <div>
+              <p class="btn btn-card-grey">Cancel</p>
+            </div>
+            <p>Total cost §50</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="banner-dashboard">
     <h2>Welcome, <%= current_user.first_name %>!</h2>
     <h3>Your Saved Bookings!</h3>
   </div>
@@ -21,4 +104,4 @@
     </div>
     <% end %>
   </div>
-  <%= link_to "Add a New Planet", new_land_path, class: "btn btn-primary" %>
+  <%= link_to "Add a New Planet", new_land_path, class: "btn btn-primary" %> -->
