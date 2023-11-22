@@ -11,7 +11,11 @@
         <%= link_to land_path(land) do %>
           <div class="mb-3">
             <div class="card-planet">
+            <% if land.images.any? %>
               <%= image_tag (land.images.first) %>
+              <% else %>
+              <p>no image</p>
+              <% end %>
                 <div class="card-planet-infos">
                   <div>
                     <h2><%= land.address %></h2>
