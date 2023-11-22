@@ -19,9 +19,9 @@
                         placeholder: 'e.g., 24c Interstellar Way',
                         input_html: { class: 'form-control' },
                         wrapper_html: { class: 'mb-4' } %>
-            <%= f.input :images, as: :file,
+            <%= f.input :photos, as: :file,
                         label: 'Upload Planet Image',
-                        input_html: { class: 'form-control' },
+                        input_html: { class: 'form-control', multiple: true  },
                         wrapper_html: { class: 'mb-4' } %>
             <%= f.submit 'Create Planet', class: 'btn btn-primary w-100' %>
           <% end %>
