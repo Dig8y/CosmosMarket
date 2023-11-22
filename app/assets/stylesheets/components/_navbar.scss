@@ -24,11 +24,6 @@
   display: inline;
 }
 
-.middle-nav-btn {
-  background-color: grey;
-  border-radius: 40px;
-}
-
 .area-btn {
   color: rgb(0, 0, 0);
   margin: 16px 32px;
@@ -45,8 +40,14 @@
   border-radius: 40px;
   font-weight: 600;
   font-size: 24px;
+  right: calc(50% - 65.504px);
   p {
     font-size: 24px;
     margin: 0;
   }
+}
+
+.avatar-icon {
+  font-size: 30px;
+  color: black;
 }
