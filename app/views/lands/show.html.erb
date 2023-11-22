@@ -10,14 +10,13 @@
     <div class='col-6'>
         <% if @land.photos.attached? %>
           <div style="background-image: url(<%= cl_image_path @land.photos.first.key %>);" class="showpage-large-img"></div>
-        <% else %>
-          <!--<div style="background-image: url(<%= @land.images[0] %>);" class="showpage-large-img"></div>-->
-          <p>nothing here yet</p>
+        <% elsif @land.images %>
+          <div style="background-image: url(<%= @land.images[0] %>);" class="showpage-large-img"></div>
         <% end %>
     </div>
     <div class="sml-images-container col-6">
         <% if @land.photos.attached? %>
-          <% @land.photos.each do |photo| %>
+          <% @land.photos.reverse.take(4).each do |photo| %>
             <div style="background-image: url(<%= cl_image_path photo.key %>);" class="showpage-small-img"></div>
           <% end %>
         <% else %>
@@ -69,7 +68,11 @@
         <%= simple_form_for [@land, @booking] do |f| %>
           <%= f.input :booking_start_date %>
           <%= f.input :booking_end_date %>
-          <% if user_signed_in? %>
+          <% if current_user.species == "martian" %>
+            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="As a martian you cannot book!">
+              <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
+            </span>
+          <% elsif current_user.species == "human" %>
             <%= f.submit 'Create booking', class: 'btn btn-success' %>
           <% else %>
             <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
