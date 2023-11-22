@@ -55,10 +55,11 @@
     </div>
     <div class="col-5">
       <div class="form-container">
+      <h3>Check Availability</h3>
         <%= simple_form_for [@land, @booking] do |f| %>
           <%= f.input :booking_start_date %>
           <%= f.input :booking_end_date %>
-          <%= f.submit 'Create booking', class: 'btn btn-outline-success'%>
+          <%= f.submit 'Create booking', class: 'btn btn-success'%>
         <% end %>
       </div>
     </div>
