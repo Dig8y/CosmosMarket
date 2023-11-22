@@ -5,8 +5,11 @@
         <% @lands.each do |land| %>
         <div class="mb-3">
           <div class="card-planet">
-
-            <%= image_tag (land.images.first) %>
+            <% if land.images.any? %>
+              <%= image_tag (land.images.first) %>
+            <% else %>
+              <p>Nothing here yet</p>
+            <% end %>
 
               <div class="card-planet-infos">
                 <div>

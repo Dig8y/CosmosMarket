@@ -1,14 +1,24 @@
-<div class="container mt-4">
-  <h2>Welcome, <%= current_user.first_name %>!</h2>
-  <div class="bookings">
+<div class="banner">
+    <h2>Welcome, <%= current_user.first_name %>!</h2>
+    <h3>Your Saved Bookings!</h3>
+  </div>
+
+  <div class="dashboard-container">
     <% @bookings.each do |booking| %>
-      <div class="booking-card">
-        <div class="booking-details">
-          <h3><%= booking.land.address %></h3>
-          <p><strong>Start Date:</strong> <%= booking.booking_start_date.strftime("%B %d, %Y") %></p>
-          <p><strong>End Date:</strong> <%= booking.booking_end_date.strftime("%B %d, %Y") %></p>
+    <div class="card-dashboard">
+      <div class="card-dashboard-infos">
+        <div>
+            <div class="dashboard-card">
+              <div class="dashboard-details">
+
+                <h3><%= booking.land.address %></h3>
+                <p><strong>Start Date:</strong> <%= booking.booking_start_date.strftime("%B %d, %Y") %></p>
+                <p><strong>End Date:</strong> <%= booking.booking_end_date.strftime("%B %d, %Y") %></p>
+              </div>
+            </div>
         </div>
       </div>
+    </div>
     <% end %>
   </div>
-</div>
+  <%= link_to "Add a New Planet", new_land_path, class: "btn btn-primary" %>
