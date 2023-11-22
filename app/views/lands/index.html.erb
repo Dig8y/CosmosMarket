@@ -11,10 +11,10 @@
         <%= link_to land_path(land) do %>
           <div class="mb-3">
             <div class="card-planet">
-            <% if land.images.any? %>
-              <%= image_tag (land.images.first) %>
-              <% else %>
-              <p>No image</p>
+               <% if land.photos.attached? %>
+                <%= cl_image_tag land.photos.first.key %>
+              <% elsif land.images %>
+                <%= image_tag (land.images.first) %>
               <% end %>
                 <div class="card-planet-infos">
                   <div>
