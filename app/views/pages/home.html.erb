@@ -42,12 +42,11 @@
       <div class="middle-section-card">
         <div class="card-planet">
                 <div class="card-planet-infos">
-                  <div>
-                    <h2><%= land.address %></h2>
-                    <p><%= land.area %> Square feet</p>
-                  </div>
-                  <h2 class="card-planet-pricing">§500</h2>
-                  <img src="" class="card-planet-user star-bordered" />
+                  <% if land.photos.attached? %>
+                    <%= cl_image_tag land.photos.first.key, class: "home-planet-img" %>
+                  <% elsif land.images %>
+                    <%= image_tag (land.images.first), class: "home-planet-img" %>
+                  <% end %>
                 </div>
             </div>
       </div>
