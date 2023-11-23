@@ -1,4 +1,9 @@
-<%= render "pages/navbar" %>
+<% if user_signed_in?%>
+  <%= render 'pages/navbar_in_session'  %>
+<% else %>
+  <%= render 'pages/navbar' %>
+<% end %>
+
 
 <div class="planet-background">
   <div class="container py-5">

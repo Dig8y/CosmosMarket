@@ -15,6 +15,8 @@ require 'faker'
 # User.new (first_name, last_name, email,(species human or martian), password:"123456")
 local_attractions = %w[habedashery rock-throwing rock-climbing rock'n'roll rollercoasters food]
 
+Booking.destroy_all
+
 puts "destroying all users..."
 User.destroy_all
 puts "users destroyed"
