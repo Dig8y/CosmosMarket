@@ -1,6 +1,7 @@
 class LandsController < ApplicationController
   def index
     @lands = Land.all
+    @lands = Land.search_by_planet_name(params[:query]) if params[:query].present?
   end
 
   def show
