@@ -9,13 +9,12 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 10px;
+  margin: 30px;
   border-radius: 14px;
 }
 
 .card-planet > img {
   width: 100%;
-  height: 400px;
   object-fit: cover;
 }
 
@@ -45,4 +44,13 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-planet-names{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  margin-left: 56px;
+  margin-top: 21px;
 }
