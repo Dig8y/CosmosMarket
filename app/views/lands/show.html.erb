@@ -31,7 +31,14 @@
     <div class="col-7">
       <h4 class="showpage-titler">Stay on <%= planet %>, Milky Way</h4>
       <h6>20 guests - 2 Bedrooms - 2 Beds - 2 Bathrooms</h6>
-      <h4 class="favourite-button">Guest Favourite - 4.8 ⭐️</h4>
+      <% @rating_sum = 0 %>
+      <% @reviews = @land.reviews %>
+      <% @reviews.each { |review| @rating_sum += review.rating } %>
+      <% if @land.reviews.present? %>
+        <h4 class="favourite-button">Guest Favourite - <%= @rating_sum / @reviews.length %> ⭐️</h4>
+      <% else %>
+        <h4 class="favourite-button">Be the first to review</h4>
+      <% end %>
       <div class="show-user-info" style="border-bottom: solid;">
         <%= image_tag 'Avatar.png', :class => "avatar" %>
         <div class="show-user-info-text">
