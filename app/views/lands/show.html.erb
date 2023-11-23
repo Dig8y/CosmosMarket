@@ -63,24 +63,51 @@
     </div>
     <div class="col-5">
       <div class="form-container">
-    <% if current_user.species == 'human' %>
-      <h3>Check Availability</h3>
-      <%= simple_form_for [@land, @booking] do |f| %>
-        <%= f.input :booking_start_date %>
-        <%= f.input :booking_end_date %>
-          <% if user_signed_in? %>
-            <%= f.submit 'Create booking', class: 'btn btn-success' %>
-          <% else %>
-            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
-            <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
-            </span>
+      <% unless user_signed_in? && current_user.species == 'martian' %>
+        <h3>Check Availability</h3>
+        <%= simple_form_for [@land, @booking] do |f| %>
+          <%= f.input :booking_start_date %>
+          <%= f.input :booking_end_date %>
+            <% if user_signed_in? && current_user.species == 'human'%>
+              <%= f.submit 'Create booking', class: 'btn btn-success' %>
+            <% else %>
+              <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
+              <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
+              </span>
+            <% end %>
           <% end %>
+        <% else %>
+          <h1>You are a martian! You cannot book - just conquer</h1>
         <% end %>
-    <% elsif current_user.species == 'martian' %>
-      <h3>You are a martian - you can only buy and conquer!</h3>
-    <% end %>
+
       </div>
     </div>
+  </div>
+  <div class="review-container">
+    <div class="review-comments">
+        <h2>Reviews</h2>
+        <% @land.reviews.each do |review| %>
+          <div class='review-comment'>
+            <p><%= content_tag :p, '⭐️' * review.rating %></p>
+            <h4><%= review.comment %></h4>
+          </div>
+        <% end %>
+      </div>
+      <div class="review-form">
+      <%= simple_form_for [@land, @review] do |f|%>
+        <%= f.input :rating, :collection => (0..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+        <%= f.input :comment %>
+
+        <% unless user_signed_in? && current_user.species == 'human' %>
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
+            <%= f.submit 'Add review', class: 'btn btn-success', disabled: true %>
+          </span>
+        <% else %>
+          <%= f.submit 'Add review', class: 'btn btn-success' %>
+        <% end %>
+      <% end %>
+
+      </div>
   </div>
 </div>
 

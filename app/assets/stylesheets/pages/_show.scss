@@ -64,3 +64,37 @@
 a:link {
   color: black;
 }
+
+.review-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-top: 32px;
+  border-top: solid;
+}
+
+.review-comment {
+  h2 {
+    font-size: 30px;
+  }
+  h4 {
+    font-size: 20px;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  padding: 16px 0;
+  border-bottom: 2px solid rgba(195, 195, 195, 0.4);
+  width: 100%;
+}
+.review-comments {
+  width: 55%;
+}
+
+.review-form {
+  width: 40%;
+  background-color: rgba(195, 195, 195, 0.4);
+  padding: 16px;
+  height: 280px;
+}

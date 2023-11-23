@@ -6,6 +6,7 @@ class LandsController < ApplicationController
   def show
     @land = Land.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
   end
 
   def new
