@@ -24,6 +24,16 @@ class LandsController < ApplicationController
     end
   end
 
+  def edit
+    @land = Land.find(params[:id])
+  end
+
+  def update
+    @land = Land.find(params[:id])
+    @land.update(land_params)
+    redirect_to dashboard_path, status: :see_other
+  end
+
   private
 
   def land_params

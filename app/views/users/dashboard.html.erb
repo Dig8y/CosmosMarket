@@ -1,4 +1,4 @@
-<%= render '/pages/navbar_in_dashboard' %>
+
 <div class="container">
   <% if current_user.species == 'martian' %>
     <div class="dash-header">
@@ -14,28 +14,73 @@
     <h4>My planets</h4>
     <div class="booking-cards-container">
       <% current_user.lands.each do |land| %>
-      <%= link_to land_path(land) do %>
-      <div class="booking-card">
-          <% if land.photos.attached? %>
-            <div style="background-image: url(<%= cl_image_path land.photos.first.key %>);" class="booking-card-img"></div>
-          <% elsif land.images %>
-            <div style="background-image: url(<%= land.images[0] %>);" class="booking-card-img"></div>
+      <div style="position: relative;">
+        <%= link_to land_path(land) do %>
+          <div class="booking-card">
+              <% if land.photos.attached? %>
+                <div style="background-image: url(<%= cl_image_path land.photos.first.key %>);" class="booking-card-img"></div>
+              <% elsif land.images %>
+                <div style="background-image: url(<%= land.images[0] %>);" class="booking-card-img"></div>
+              <% end %>
+              <div class="booking-card-top-info">
+                <div>
+                  <p><%= land.address %></p>
+                  <p><strong><%= land.planet_name %></strong></p>
+                  <p><%= land.local_attractions %></p>
+                </div>
+              </div>
+              <div class="booking-card-bot-info" style="display: flex; justify-content: flex-end;">
+                <p>Cost per night <strong>§<%= land.price.to_i %></strong></p>
+              </div>
+            </div>
           <% end %>
-          <div class="booking-card-top-info">
-            <div>
-              <p><%= land.address %></p>
-              <p><strong><%= land.planet_name %></strong></p>
-              <p><%= land.local_attractions %></p>
-            </div>
+          <div style="position: absolute; bottom: 10px; left: 16px; z-index: 1;">
+              <i class="fa-solid fa-pen-to-square dashboard-icon" data-bs-toggle="modal" data-bs-target="#landModel<%land.id%>" ></i>
           </div>
-          <div class="booking-card-bot-info">
-            <div>
-              <i class="fa-solid fa-pen-to-square dashboard-icon"></i>
+          <div class="modal modal-xl fade" id="landModel<%land.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Add a planet</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class='p-3'>
+                  <%= simple_form_for land, html: { multipart: true } do |f| %>
+                      <%= f.input :planet_name,
+                                  placeholder: 'Enter your planet name',
+                                  input_html: { class: 'form-control' },
+                                  wrapper_html: { class: 'mb-3' } %>
+                      <%= f.input :area,
+                                  placeholder: 'Enter your planets area',
+                                  input_html: { class: 'form-control' },
+                                  wrapper_html: { class: 'mb-3' } %>
+                      <%= f.input :description,
+                                  placeholder: 'Enter a description about your planet',
+                                  input_html: { class: 'form-control' },
+                                  wrapper_html: { class: 'mb-3' } %>
+                      <%= f.input :local_attractions,
+                                  placeholder: 'E.g., Cave network, waterfalls',
+                                  input_html: { class: 'form-control' },
+                                  wrapper_html: { class: 'mb-3' } %>
+                      <%= f.input :address,
+                                  placeholder: 'e.g., 24c Interstellar Way',
+                                  input_html: { class: 'form-control' },
+                                  wrapper_html: { class: 'mb-4' } %>
+                      <%= f.input :price,
+                                  placeholder: 'Enter your cost per night',
+                                  input_html: { class: 'form-control' },
+                                  wrapper_html: { class: 'mb-3' } %>
+                      <%= f.input :photos, as: :file,
+                                  label: 'Upload Planet Image',
+                                  input_html: { class: 'form-control', multiple: true  },
+                                  wrapper_html: { class: 'mb-4' } %>
+                      <%= f.submit 'Add planet', class: 'btn btn-primary w-100' %>
+                    <% end %>
+                </div>
+              </div>
             </div>
-            <p>Cost per night <strong>§<%= land.price.to_i %></strong></p>
           </div>
         </div>
-        <% end %>
       <% end %>
     </div>
   <% elsif current_user.species == 'human' %>
@@ -53,28 +98,34 @@
     <h4>Future Bookings</h4>
     <div class="booking-cards-container">
       <% current_user.bookings.each do |booking|%>
-        <%= link_to  land_path(booking.land) do %>
-        <div class="booking-card">
-          <div class="booking-card-img" style="background-image: url(<%=booking.land.images[0]%>)"></div>
-          <div class="booking-card-top-info">
-            <div>
-              <p><%= booking.land.address %></p>
-              <p><%= booking.land.local_attractions %></p>
+        <div style="position: relative;">
+          <%= link_to  land_path(booking.land) do %>
+          <div class="booking-card">
+            <div class="booking-card-img" style="background-image: url(<%=booking.land.images[0]%>)"></div>
+            <div class="booking-card-top-info">
+              <div>
+                <p><%= booking.land.address %></p>
+                <p><%= booking.land.local_attractions %></p>
+              </div>
+              <div class="booking-date-info">
+                <p>From: <%= booking.booking_start_date %></p>
+                <p>To: <%= booking.booking_end_date %></p>
+              </div>
             </div>
-            <div class="booking-date-info">
-              <p>From: <%= booking.booking_start_date %></p>
-              <p>To: <%= booking.booking_end_date %></p>
+            <div class="booking-card-bot-info">
+              <div>
+              </div>
+              <% @elapsed_time = (booking.booking_end_date - booking.booking_start_date).floor %>
+              <p>Total cost <strong>§<%= @elapsed_time * booking.land.price.to_i %></strong></p>
             </div>
           </div>
-          <div class="booking-card-bot-info">
-            <div>
-              <p class="btn-cancel">Cancel</p>
-            </div>
-            <% @elapsed_time = (booking.booking_end_date - booking.booking_start_date).floor %>
-            <p>Total cost <strong>§<%= @elapsed_time * booking.land.price.to_i %></strong></p>
+          <div style="position: absolute; bottom: 10px; left: 16px;">
+            <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel?"} do %>
+              <p class="btn-cancel m-0">Cancel</p>
+            <% end %>
           </div>
+          <% end %>
         </div>
-        <% end %>
       <% end %>
     </div>
   <% end %>
