@@ -27,11 +27,11 @@
               <% end %>
                 <div class="card-planet-infos">
                   <div>
-                    <h2><%= land.address %></h2>
-                    <p><%= land.area %> Square feet</p>
-                    <p></p>
+                    <h2><strong><%= land.planet_name %></strong></h2>
+                    <h2 style="font-weight: 400;"><%= land.address %></h2>
+                    <p style="color: blue;"><%= land.area %> Square feet</p>
                   </div>
-                  <h2 class="card-planet-pricing">§500</h2>
+                  <h2 class="card-planet-pricing"><strong>§<%= land.price.to_i %></strong> per night</h2>
                   <img src="" class="card-planet-user star-bordered" />
                 </div>
             </div>
