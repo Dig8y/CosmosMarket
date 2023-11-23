@@ -3,7 +3,6 @@
 <% else %>
   <%= render 'pages/navbar' %>
 <% end %>
-
 <% planet = @land.address.split(' ').last %>
 <div class="container">
   <h2 class="show-header">Wonderful Retreat on <%= planet %></h2>
@@ -29,14 +28,33 @@
   </div>
   <div class="row">
     <div class="col-7">
-      <h4 class="showpage-titler">Stay on <%= planet %>, Milky Way</h4>
-      <h6>20 guests - 2 Bedrooms - 2 Beds - 2 Bathrooms</h6>
-      <h4 class="favourite-button">Guest Favourite - 4.8 ⭐️</h4>
+      <div class="d-flex justify-content-between">
+        <div>
+          <h4 class="showpage-titler">Stay on <%= planet %>, Milky Way</h4>
+          <h6>20 guests - 2 Bedrooms - 2 Beds - 2 Bathrooms</h6>
+        </div>
+          <h6 style="align-self: flex-end;"><strong>§<%= @land.price.to_i %></strong> Per night</h6>
+      </div>
+      <% @rating_sum = 0 %>
+      <% @reviews = @land.reviews %>
+      <% @reviews.each { |review| @rating_sum += review.rating } %>
+      <% if @land.reviews.present? %>
+        <h4 class="favourite-button">Guest Favourite - <%= @rating_sum / @reviews.length %> ⭐️</h4>
+      <% else %>
+        <h4 class="favourite-button">Be the first to review</h4>
+      <% end %>
       <div class="show-user-info" style="border-bottom: solid;">
         <%= image_tag 'Avatar.png', :class => "avatar" %>
         <div class="show-user-info-text">
           <h6>Hosted by <%= @land.user.first_name.capitalize %></h6>
           <p>9 years of hosting</p>
+        </div>
+      </div>
+      <div class="show-user-info">
+        <%= image_tag 'info.png', :class => "avatar" %>
+        <div class="show-user-info-text">
+          <h6>Description</h6>
+          <p><%= @land.description %></p>
         </div>
       </div>
       <div class="show-user-info">
@@ -65,21 +83,35 @@
       <div class="form-container">
       <% unless user_signed_in? && current_user.species == 'martian' %>
         <h3>Check Availability</h3>
-        <%= simple_form_for [@land, @booking] do |f| %>
-          <%= f.input :booking_start_date %>
-          <%= f.input :booking_end_date %>
+        <%= simple_form_for [@land, @booking], data: { controller: "elapsed", elapsed_price_value: @land.price } do |f| %>
+          <%= f.input :booking_start_date,
+            as: :string,
+            title: 'Book start date',
+            input_html: { data: { controller: "datepicker", elapsed_target: 'start', action: 'change->elapsed#calc' } }
+             %>
+          <%= f.input :booking_end_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker", elapsed_target: 'end', action: 'change->elapsed#calc' } }
+            %>
+            <div class="form-info">
+              <div>
+                <p><strong>§<%= @land.price.to_i %></strong>   Per night</p>
+                <p data-elapsed-target="days" style=" border-bottom: solid;
+    padding-bottom: 16px;"></p>
+              </div>
+              <p data-elapsed-target="total"></p>
+            </div>
             <% if user_signed_in? && current_user.species == 'human'%>
-              <%= f.submit 'Create booking', class: 'btn btn-success' %>
+              <%= f.submit 'Create booking', class: 'btn btn-success', data: { elapsed_target: 'btn'}, disabled: true %>
             <% else %>
               <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
-              <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
+                <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
               </span>
             <% end %>
           <% end %>
         <% else %>
           <h1>You are a martian! You cannot book - just conquer</h1>
         <% end %>
-
       </div>
     </div>
   </div>
