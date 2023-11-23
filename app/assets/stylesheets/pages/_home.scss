@@ -31,7 +31,7 @@ a:link {
 }
 
 .btn-brown-nav {
-    background-color: #C3B0B0;
+    background: url("../../images/stars_for_button.png") no-repeat scroll 0 0 transparent;
     color: white;
     padding: 10px 30px;
     border-radius: 40px;
@@ -43,6 +43,9 @@ a:link {
       transition: 0.3s ease;
     }
     font-weight: 700;
+    background-size: cover;
+    padding: 15px 40px;
+    margin-top: 10px;
 }
 
 .section {
