@@ -13,8 +13,11 @@
             <div class="card-planet">
                <% if land.photos.attached? %>
                 <%= cl_image_tag land.photos.first.key %>
-              <% elsif land.images %>
+                <p>this has a cloudinary image</p>
+              <% elsif land.images.any? %>
                 <%= image_tag (land.images.first) %>
+                <% else %>
+                  <p>No Image</p>
               <% end %>
                 <div class="card-planet-infos">
                   <div>

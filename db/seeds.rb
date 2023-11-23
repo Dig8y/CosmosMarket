@@ -22,6 +22,8 @@ descriptions = [
   "From the bustling metropolises of Earth to the serene solitude of an alien planet—the change is both refreshing and surreal. My holiday here is an exploration of the unknown, where the rhythm of life is dictated by the alien landscapes and the mysterious allure of a planet waiting to be discovered. It's not just a vacation; it's a cosmic odyssey."
 ]
 
+Booking.destroy_all
+
 puts "destroying all users..."
 User.destroy_all
 puts "users destroyed"
