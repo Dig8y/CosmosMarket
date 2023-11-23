@@ -6,9 +6,9 @@
         <h2>Welcome <%= current_user.first_name %></h2>
         <h5>Species: <%= current_user.species %></h5>
       </div>
-      <%= link_to new_land_path do %>
-        <h4 class="btn btn-create">Create new planet</h4>
-      <% end %>
+      <button type="button" class="btn btn-create" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add a planet
+      </button>
     </div>
 
     <h4>My planets</h4>
@@ -78,4 +78,51 @@
       <% end %>
     </div>
   <% end %>
+</div>
+
+
+<!-- modal -->
+
+<div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a planet</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class='p-3'>
+        <%= simple_form_for @land, html: { multipart: true } do |f| %>
+            <%= f.input :planet_name,
+                        placeholder: 'Enter your planet name',
+                        input_html: { class: 'form-control' },
+                        wrapper_html: { class: 'mb-3' } %>
+            <%= f.input :area,
+                        placeholder: 'Enter your planets area',
+                        input_html: { class: 'form-control' },
+                        wrapper_html: { class: 'mb-3' } %>
+            <%= f.input :description,
+                        placeholder: 'Enter a description about your planet',
+                        input_html: { class: 'form-control' },
+                        wrapper_html: { class: 'mb-3' } %>
+            <%= f.input :local_attractions,
+                        placeholder: 'E.g., Cave network, waterfalls',
+                        input_html: { class: 'form-control' },
+                        wrapper_html: { class: 'mb-3' } %>
+            <%= f.input :address,
+                        placeholder: 'e.g., 24c Interstellar Way',
+                        input_html: { class: 'form-control' },
+                        wrapper_html: { class: 'mb-4' } %>
+            <%= f.input :price,
+                        placeholder: 'Enter your cost per night',
+                        input_html: { class: 'form-control' },
+                        wrapper_html: { class: 'mb-3' } %>
+            <%= f.input :photos, as: :file,
+                        label: 'Upload Planet Image',
+                        input_html: { class: 'form-control', multiple: true  },
+                        wrapper_html: { class: 'mb-4' } %>
+            <%= f.submit 'Add planet', class: 'btn btn-primary w-100' %>
+          <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -9,7 +9,6 @@ class Land < ApplicationRecord
   validates :planet_name, presence: true
   validates :price, presence: true
   validates :description, presence: true
-  validates :description, length: { minimum: 20 }
 
   include PgSearch::Model
   pg_search_scope :search_by_planet_name,
