@@ -16,18 +16,23 @@
       <% current_user.lands.each do |land| %>
       <%= link_to land_path(land) do %>
       <div class="booking-card">
-          <div class="booking-card-img" style="background-image: url(<%= cl_image_path land.photos.first.key %>)"></div>
+          <% if land.photos.attached? %>
+            <div style="background-image: url(<%= cl_image_path land.photos.first.key %>);" class="booking-card-img"></div>
+          <% elsif land.images %>
+            <div style="background-image: url(<%= land.images[0] %>);" class="booking-card-img"></div>
+          <% end %>
           <div class="booking-card-top-info">
             <div>
               <p><%= land.address %></p>
+              <p><strong><%= land.planet_name %></strong></p>
               <p><%= land.local_attractions %></p>
             </div>
           </div>
           <div class="booking-card-bot-info">
             <div>
-              <p class="btn btn-card-grey">Edit</p>
+              <i class="fa-solid fa-pen-to-square dashboard-icon"></i>
             </div>
-            <p>Cost per night</p>
+            <p>Cost per night <strong>§<%= land.price.to_i %></strong></p>
           </div>
         </div>
         <% end %>
@@ -56,16 +61,17 @@
               <p><%= booking.land.address %></p>
               <p><%= booking.land.local_attractions %></p>
             </div>
-            <div>
-              <p><%= booking.booking_start_date %></p>
-              <p><%= booking.booking_end_date %></p>
+            <div class="booking-date-info">
+              <p>From: <%= booking.booking_start_date %></p>
+              <p>To: <%= booking.booking_end_date %></p>
             </div>
           </div>
           <div class="booking-card-bot-info">
             <div>
-              <p class="btn btn-card-grey">Cancel</p>
+              <p class="btn-cancel">Cancel</p>
             </div>
-            <p>Total cost §50</p>
+            <% @elapsed_time = (booking.booking_end_date - booking.booking_start_date).floor %>
+            <p>Total cost <strong>§<%= @elapsed_time * booking.land.price.to_i %></strong></p>
           </div>
         </div>
         <% end %>
