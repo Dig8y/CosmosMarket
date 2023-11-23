@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   devise_for :users
 
-  resources :lands do
+  resources :lands, except: [:new] do
     resources :lands, only: :index
     resources :bookings, only: [:new, :create]
     resources :reviews, only: [:new, :create]
