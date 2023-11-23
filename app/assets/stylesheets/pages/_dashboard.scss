@@ -25,7 +25,6 @@
   background-position: center;
   background-repeat: none;
   border-radius: 16px;
-  margin-bottom: 16px;
 }
 
 .booking-card-top-info {
@@ -40,8 +39,7 @@
 .booking-card-bot-info {
   display: flex;
   justify-content: space-between;
-  margin-top: 24px;
-  margin-bottom: 12px;
+  margin-top: 12px;
   p {
     margin: 0;
     align-self: flex-end;
@@ -49,12 +47,8 @@
   }
 }
 
-.btn-card-grey {
-  padding: 12px 15px;
-  border-radius: 10px;
-  background-color: darkgray;
-  color: black;
-  display: inline;
+.btn-cancel {
+  color: #b61313 !important;
 }
 
 .btn-create {
@@ -70,4 +64,16 @@
   display: flex;
   justify-content: space-between;
   margin: 16px 0;
+ }
+
+ .dashboard-icon {
+  font-size: 28px;
+ }
+
+ .booking-date-info {
+  display: flex;
+  flex-direction: column;
+  &:last-child {
+    align-items: flex-end;
+  }
  }
