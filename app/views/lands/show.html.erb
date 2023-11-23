@@ -93,18 +93,19 @@
             as: :string,
             input_html: { data: { controller: "datepicker", elapsed_target: 'end', action: 'change->elapsed#calc' } }
             %>
-            <div>
+            <div class="form-info">
               <div>
                 <p><strong>§<%= @land.price.to_i %></strong>   Per night</p>
-                <p data-elapsed-target="days"></p>
+                <p data-elapsed-target="days" style=" border-bottom: solid;
+    padding-bottom: 16px;"></p>
               </div>
               <p data-elapsed-target="total"></p>
             </div>
             <% if user_signed_in? && current_user.species == 'human'%>
-              <%= f.submit 'Create booking', class: 'btn btn-success', data: { elapsed_target: 'btn'} %>
+              <%= f.submit 'Create booking', class: 'btn btn-success', data: { elapsed_target: 'btn'}, disabled: true %>
             <% else %>
               <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
-              <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
+                <%= f.submit 'Create booking', class: 'btn btn-success', disabled: true %>
               </span>
             <% end %>
           <% end %>
