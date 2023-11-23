@@ -5,6 +5,7 @@
       <%= link_to lands_path do %>
         <p class="btn-brown-nav">View All Available Planets</p>
       <% end %>
+      <i class="arrow down"></i>
   </div>
 </div>
 <div class="section top-section">
@@ -36,20 +37,21 @@
 </div>
 <div class="section middle-section">
   <div class="container">
-    <h2>Why choose CosmosMarket?</h2>
+    <h2>Stay on.....</h2>
     <div class="middle-section-card-container">
         <% @lands.each do |land| %>
-      <div class="middle-section-card">
         <div class="card-planet">
-                <div class="card-planet-infos">
-                  <% if land.photos.attached? %>
-                    <%= cl_image_tag land.photos.first.key, class: "home-planet-img" %>
-                  <% elsif land.images %>
-                    <%= image_tag (land.images.first), class: "home-planet-img" %>
-                  <% end %>
-                </div>
+        <div class = "card-planet-names">
+        <%= land.planet_name %>
+        </div>
+          <% if land.photos.attached? %>
+            <%= cl_image_tag land.photos.first.key, class: "home-planet-img" %>
+          <% elsif land.images %>
+            <%= image_tag (land.images.first), class: "home-planet-img" %>
+          <% end %>
+
             </div>
-      </div>
+
       <% end %>
 
     </div>
@@ -79,7 +81,7 @@
     <% if user_signed_in? %>
       <div class="btn-group dropstart">
         <button type="button" class="dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: 0; background: transparent;">
-          <i class="fa-solid fa-user avatar-icon"></i>
+          <i class="fa-solid fa-user avatar-icon" style="color:white"></i>
         </button>
         <ul class="dropdown-menu">
           <a class="dropdown-item" href="/dashboard">Dashboard</a>
