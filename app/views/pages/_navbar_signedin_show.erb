@@ -1,0 +1,24 @@
+<div class="navbar">
+  <div class="container d-flex jutify-content-between">
+    <div>
+       <%= link_to root_path do %>
+        <h1 style="color: black;">CosmosMarket</h1>
+      <% end %>
+    </div>
+
+    <div>
+      <div class="btn-group dropstart">
+        <button type="button" class="dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: 0;">
+          <i class="fa-solid fa-user avatar-icon"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <a class="dropdown-item" href="/dashboard">Dashboard</a>
+          <%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to log out?'}, class: 'dropdown-item' %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<%= link_to lands_path do %>
+  <p class="btn-grey" style="margin: 0; color: black;">View planets</p>
+<% end %>
+</div>
