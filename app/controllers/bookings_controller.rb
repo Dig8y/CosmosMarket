@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to land_path(@booking.land), status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
