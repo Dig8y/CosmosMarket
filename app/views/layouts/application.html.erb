@@ -14,6 +14,9 @@
   </head>
 
   <body>
+  <% unless controller_name == 'pages' && action_name == 'home' %>
+     <%= render 'pages/navbar'%>
+  <% end %>
     <%= yield %>
     <% unless notice.nil? %>
       <p class="notice"><%= notice %></p>

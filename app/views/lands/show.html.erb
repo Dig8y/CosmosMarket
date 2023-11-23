@@ -1,10 +1,6 @@
-<% if user_signed_in? %>
-  <%= render 'pages/navbar_in_session' %>
-<% else %>
-  <%= render 'pages/navbar' %>
-<% end %>
 <% planet = @land.address.split(' ').last %>
-<div class="container">
+<div class="container" style="margin-top: 26px">
+<%= link_to 'Go Back To All Planets', lands_path, class: 'small-text-link' %>
   <h2 class="show-header">Wonderful Retreat on <%= planet %></h2>
   <div class='row mb-4'>
     <div class='col-6'>
