@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :lands do
+    resources :lands, only: :index
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:destroy, :edit, :update]
