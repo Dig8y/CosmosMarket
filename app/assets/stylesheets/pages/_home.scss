@@ -3,10 +3,16 @@ a:link {
   text-decoration: none;
 }
 
+// body {
+//   background-color: pink;
+//   background-color: #0d6efd40,
+// }
+
 .banner-nav-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   h1 {
     font-weight: 700;
     margin: 0;
@@ -17,6 +23,7 @@ a:link {
     margin-top: 0;
     font-weight: 700;
     font-size: 20px;
+
   }
 }
 
@@ -31,30 +38,31 @@ a:link {
 }
 
 .btn-brown-nav {
-    background: url("../../images/stars_for_button.png") no-repeat scroll 0 0 transparent;
+    background-color: rgb(112, 112, 249);
     color: white;
     padding: 10px 30px;
     border-radius: 40px;
     border: 0px;
     display: inline;
     transition: 0.3s ease;
+    box-shadow: 7px 7px 5px rgba(15, 2, 2, 0.2);
     &:hover {
       background-color: rgba(145, 134, 134, 0.689);
       transition: 0.3s ease;
     }
     font-weight: 700;
-    background-size: cover;
-    padding: 15px 40px;
-    margin-top: 10px;
 }
 
 .section {
-  height: 400px;
+  margin-top: 30px;
   padding: 24px 0;
+
+
 }
 
 .middle-section {
-  background-color: #C3B0B0;
+  background-color: rgb(112, 112, 249);
+  box-shadow: 10px 10px 5px rgba(15, 2, 2, 0.2);
 }
 
 .bottom-section {
@@ -63,8 +71,9 @@ a:link {
   align-items: center;
   justify-content: center;
   text-align: center;
+  box-shadow: 10px 10px 5px rgba(15, 2, 2, 0.2);
   h4 {
-    margin-bottom: 24px;
+    margin-bottom: 50px;
   }
 }
 
@@ -72,7 +81,8 @@ a:link {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #C3B0B0;
+  background-color: rgb(112, 112, 249);
+  box-shadow: 10px 10px 5px rgba(15, 2, 2, 0.2);
   width: 250px;
   height: 300px;
   text-align: center;
@@ -96,6 +106,7 @@ a:link {
 .top-section-card-container {
   display: flex;
   justify-content: space-between;
+
 }
 
 .middle-section-card {
