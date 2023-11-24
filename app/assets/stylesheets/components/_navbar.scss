@@ -3,10 +3,7 @@
   &:link {
     text-decoration: none;
   }
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  position: relative;
 }
 
 .navbar p {
@@ -43,7 +40,7 @@
   border-radius: 40px;
   font-weight: 600;
   font-size: 24px;
-  right: calc(46% - 65.504px);
+  right: calc(50% - 65.504px);
   p {
     font-size: 24px;
     margin: 0;
