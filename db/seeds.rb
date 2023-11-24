@@ -32,12 +32,15 @@ puts "destroying all land"
 Land.destroy_all
 puts "land destroyed"
 
+comments = ["Really epic place to stay", "Loved the gaff", "Lots of room for activities", "Hung out with some aliens, pretty cool💯", "HATED IT", "Dreadful gaf"]
 IMAGES = ['https://images.unsplash.com/photo-1532795077981-fc1c26555bd4?q=80&w=3020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 'https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
  'https://images.unsplash.com/photo-1545156521-77bd85671d30?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
  'https://images.unsplash.com/photo-1632395627727-3b97d0724814?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
  'https://images.unsplash.com/photo-1632395627732-005012dbc286?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
+
+ planets = ["Tulia", "Leron", 'Iroria 7X', "Icadus", "Merth", "Taxore", "Mars", "Jupiter", "Mercury", "Druinov", "Moon", "Dencurf", "Baby spice", "Athilles", "Pluto", "Venus", "Saturn"]
 
 10.times do |i|
   user = User.new(
@@ -48,6 +51,7 @@ IMAGES = ['https://images.unsplash.com/photo-1532795077981-fc1c26555bd4?q=80&w=3
     password: '123456'
   )
   user.save!
+
   puts "created user #{user.first_name} #{user.last_name}"
   rand(1..3).times do
     land = Land.new(
@@ -58,9 +62,18 @@ IMAGES = ['https://images.unsplash.com/photo-1532795077981-fc1c26555bd4?q=80&w=3
       images: IMAGES.shuffle,
       price: rand(50..150),
       description: descriptions.sample,
-      planet_name: Faker::Space.planet
-    )
-    land.save!
+      planet_name: planets.sample
+      )
+      land.save!
+      rand(0..3).times do
+        review = Review.new(
+          rating: rand(1..5),
+          comment: comments.sample,
+          land_id: land.id
+      )
+      review.save!
+      end
+
     puts "created land - #{land.address}"
   end
 end

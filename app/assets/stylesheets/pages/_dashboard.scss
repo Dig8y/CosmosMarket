@@ -53,11 +53,18 @@
 
 .btn-create {
   padding: 24px 32px;
-  background-color: green;
+  background-color: rgb(142, 135, 222);
   font-weight: 600;
   font-size: 20px;
   border-radius: 12px;
-  height: 85px;
+  color: white;
+  transition: 0.3s ease;
+  margin: 0;
+}
+
+.btn-create:hover {
+  transition: 0.3s ease;
+  background-color: rgba(142, 135, 222, 0.8);
 }
 
 .dash-header {

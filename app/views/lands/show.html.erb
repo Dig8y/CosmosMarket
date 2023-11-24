@@ -135,7 +135,7 @@
         <%= f.input :comment %>
 
         <% unless user_signed_in? && current_user.species == 'human' %>
-          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please sign in before booking">
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="You cannot leave a review as a martian.">
             <%= f.submit 'Add review', class: 'btn btn-success', disabled: true %>
           </span>
         <% else %>

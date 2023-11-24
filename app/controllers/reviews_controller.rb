@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to land_path(@review.land)
     else
-      render 'lands/show', status: :unprocessable_entity
+      redirect_to land_path(@review.land), :notice => "Please add a star"
     end
   end
 
