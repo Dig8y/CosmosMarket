@@ -37,25 +37,59 @@
 </div>
 <div class="section middle-section">
   <div class="container">
-    <h2>Stay on.....</h2>
+    <h2 style = "color:black">Book your stay on.......</h2>
     <div class="middle-section-card-container">
-      <div class="container card-planet">
-        <div class = "card-planet-names">
-          <h3>Neptune</h3>
-           <%= image_tag "Neptune.png", height: 300 %>
-        </div>
-        <div class = "card-planet-names">
-          <h3>Mars</h3>
-           <%= image_tag "Mars.png", height: 300 %>
-        </div>
-        <div class = "card-planet-names">
-          <h3>Uranus</h3>
-           <%= image_tag "Uranus.png", height: 300 %>
-        </div>
+       <% @lands.each do |land| %>
+        <%= link_to land_path(land) do %>
+          <div class="mb-3">
+            <div class="card-planet">
+            <div id="carouselExample<%= land.id %>" class="carousel slide">
+              <div class="carousel-inner">
+                <% if land.photos.attached? %>
+                    <div class="carousel-item active">
+                      <%= cl_image_tag land.photos.first.key, class: "d-block w-100", style: "object-fit: cover; height: 350px; width: 300px;"  %>
+                    </div>
+                  <% land.photos.reverse.take(4).each do |photo| %>
+                    <div class="carousel-item">
+                      <%= cl_image_tag photo.key, class: "d-block w-100", style: "object-fit: cover; height: 350px; width: 300px;"  %>
+                    </div>
+                  <% end %>
+                <% elsif land.images.any? %>
+                    <div class="carousel-item active">
+                      <%= image_tag land.images.first, class: "d-block w-100", style: "object-fit: cover; height: 350px; width: 300px;" %>
+                    </div>
+                  <% land.images.reverse.take(4).each do |image| %>
+                    <div class="carousel-item">
+                      <%= image_tag image, class: "d-block w-100", style: "object-fit: cover; height: 350px; width: 300px;" %>
+                    </div>
+                  <% end %>
 
-
+                <% else %>
+                    <p>No Image</p>
+                <% end %>
+              </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= land.id %>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= land.id %>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+                <div class="card-planet-infos">
+                  <div>
+                    <h2><strong><%= land.planet_name %></strong></h2>
+                    <h2 style="font-weight: 400;"><%= land.address %></h2>
+                    <p style="color: blue;"><%= land.area %> Square feet</p>
+                  </div>
+                  <h2 class="card-planet-pricing"><strong>§<%= land.price.to_i %></strong> per night</h2>
+                  <img src="" class="card-planet-user star-bordered" />
+                </div>
             </div>
-
+          </div>
+        <% end %>
+      <% end %>
 
     </div>
   </div>
