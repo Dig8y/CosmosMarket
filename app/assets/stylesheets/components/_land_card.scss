@@ -16,32 +16,32 @@
 }
 
 .radius-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid 1px black;
   border-radius: 25px;
   padding: 10px;
-  margin: 0px;
+  margin: 0;
   width: 600px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
 }
-.button-search{
-  border: 0px;
+
+.button-search {
+  border: 0;
   background: transparent;
   position: absolute;
-  right: 0px;
+  right: 0;
+  z-index: 200;
 }
 
-.button-search > img{
+.button-search > img {
   position: absolute;
-  left: 7px;
-  top: -7px;
+  left: -22px;
+  top: 12px;
   width: 21px;
   height: 21px;
-  margin: 20px;
-  display: flex;
-  align-items: center;
 }
 
 .call-to-action{
