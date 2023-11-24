@@ -35,9 +35,9 @@
             </div>
           <% end %>
           <div style="position: absolute; bottom: 10px; left: 16px; z-index: 1;">
-              <i class="fa-solid fa-pen-to-square dashboard-icon" data-bs-toggle="modal" data-bs-target="#landModel<%land.id%>" ></i>
+              <i class="fa-solid fa-pen-to-square dashboard-icon" data-bs-toggle="modal" data-bs-target="#landModel<%= land.id %>" ></i>
           </div>
-          <div class="modal modal-xl fade" id="landModel<%land.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal modal-xl fade" id="landModel<%= land.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -116,7 +116,7 @@
               <div>
               </div>
               <% @elapsed_time = (booking.booking_end_date - booking.booking_start_date).floor %>
-              <p>Total cost <strong>§<%= @elapsed_time * booking.land.price.to_i %></strong></p>
+              <p>Total cost <strong>§<%= (@elapsed_time + 1) * booking.land.price.to_i %></strong></p>
             </div>
           </div>
           <div style="position: absolute; bottom: 10px; left: 16px;">
