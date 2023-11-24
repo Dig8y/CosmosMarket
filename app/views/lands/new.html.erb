@@ -11,7 +11,7 @@
       <div class="col-12 col-md-8 col-lg-6">
         <div class="form-container rounded p-4 shadow-sm">
           <h3 class="text-center mb-4">Create a New Planet</h3>
-          <%= simple_form_for @land, html: { multipart: true } do |f| %>
+          <%= simple_form_for @new_land, html: { multipart: true } do |f| %>
             <%= f.input :area,
                         placeholder: 'Enter a dramatic setting',
                         input_html: { class: 'form-control' },

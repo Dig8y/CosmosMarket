@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://ga.jspm.io/npm:star-rating.js@4.3.0/dist/star-rating.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="icon" type="image/png" href="<%= image_path('image.png') %>">
@@ -13,6 +14,9 @@
   </head>
 
   <body>
+  <% unless controller_name == 'pages' && action_name == 'home' %>
+     <%= render 'pages/navbar'%>
+  <% end %>
     <%= yield %>
     <% unless notice.nil? %>
       <p class="notice"><%= notice %></p>

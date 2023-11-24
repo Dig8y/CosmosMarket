@@ -1,14 +1,15 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1486393585019-c942d66e0b6f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1464802686167-b939a6910659?q=80&w=2900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
   <div class="container">
     <h1>Discover the Cosmos one step at a time.</h1>
     <p>Change your life and discover the Cosmos.</p>
       <%= link_to lands_path do %>
-        <p class="btn-brown-nav" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "multiple_planets.png" %>);">View Planets</p>
+        <p class="btn-brown-nav">View All Available Planets</p>
       <% end %>
+      <i class="arrow down"></i>
   </div>
 </div>
 <div class="section top-section">
-  <div class="container">
+  <div class="container" style="margin-top: 30px">
     <h2>How it works</h2>
     <div class="top-section-card-container">
       <div class="top-section-card">
@@ -36,20 +37,21 @@
 </div>
 <div class="section middle-section">
   <div class="container">
-    <h2>Why choose CosmosMarket?</h2>
+    <h2>Stay on.....</h2>
     <div class="middle-section-card-container">
         <% @lands.each do |land| %>
-      <div class="middle-section-card">
         <div class="card-planet">
-                <div class="card-planet-infos">
-                  <% if land.photos.attached? %>
-                    <%= cl_image_tag land.photos.first.key, class: "home-planet-img" %>
-                  <% elsif land.images %>
-                    <%= image_tag (land.images.first), class: "home-planet-img" %>
-                  <% end %>
-                </div>
+        <div class = "card-planet-names">
+        <%= land.planet_name %>
+        </div>
+          <% if land.photos.attached? %>
+            <%= cl_image_tag land.photos.first.key, class: "home-planet-img" %>
+          <% elsif land.images %>
+            <%= image_tag (land.images.first), class: "home-planet-img" %>
+          <% end %>
+
             </div>
-      </div>
+
       <% end %>
 
     </div>
@@ -79,7 +81,7 @@
     <% if user_signed_in? %>
       <div class="btn-group dropstart">
         <button type="button" class="dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: 0; background: transparent;">
-          <i class="fa-solid fa-user avatar-icon"></i>
+          <i class="fa-solid fa-user avatar-icon" style="color:white"></i>
         </button>
         <ul class="dropdown-menu">
           <a class="dropdown-item" href="/dashboard">Dashboard</a>

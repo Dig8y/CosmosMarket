@@ -4,4 +4,5 @@ class Booking < ApplicationRecord
   # validates :price, numericality: { greater_than: 0 }
   validates :booking_start_date, presence: true
   validates :booking_end_date, presence: true
+  validates :booking_end_date, comparison: { greater_than: :booking_start_date }
 end

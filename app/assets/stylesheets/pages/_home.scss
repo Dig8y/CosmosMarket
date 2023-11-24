@@ -3,6 +3,7 @@ a:link {
   text-decoration: none;
 }
 
+
 // body {
 //   background-color: pink;
 //   background-color: #0d6efd40,
@@ -75,6 +76,7 @@ a:link {
   h4 {
     margin-bottom: 50px;
   }
+  margin: 30px;
 }
 
 .top-section-card {
@@ -106,7 +108,6 @@ a:link {
 .top-section-card-container {
   display: flex;
   justify-content: space-between;
-
 }
 
 .middle-section-card {
@@ -133,4 +134,16 @@ a:link {
 .home-planet-img {
   height: 100%;
   width: 100%;
+}
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  margin: auto;
+  padding: 8px;
+  position: absolute;
+  right: 50%;
+  bottom: 35px;
+  transform: rotate(45deg);
+  size: 30px;
 }
