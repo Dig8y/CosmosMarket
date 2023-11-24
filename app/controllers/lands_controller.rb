@@ -28,6 +28,18 @@ class LandsController < ApplicationController
     @land = Land.find(params[:id])
   end
 
+  def conquer
+    @land = Land.find(params[:id])
+  end
+
+  def conquer_update
+    @land = Land.find(params[:id])
+
+    if @land.update(user_params)
+      render json: { message: "Reached to conquer update" }
+    end
+  end
+
   def update
     @land = Land.find(params[:id])
     @land.update(land_params)
@@ -35,6 +47,10 @@ class LandsController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:land).permit(:user_id)
+  end
 
   def land_params
     params.require(:land).permit(:area, :address, :local_attractions, :description, :planet_name, :price, photos: [])
