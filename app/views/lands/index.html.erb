@@ -24,14 +24,40 @@
         <%= link_to land_path(land) do %>
           <div class="mb-3">
             <div class="card-planet">
-               <% if land.photos.attached? %>
-                <%= cl_image_tag land.photos.first.key %>
-                <p>this has a cloudinary image</p>
-              <% elsif land.images.any? %>
-                <%= image_tag (land.images.first) %>
+            <div id="carouselExample<%= land.id %>" class="carousel slide">
+              <div class="carousel-inner">
+                <% if land.photos.attached? %>
+                    <div class="carousel-item active">
+                      <%= cl_image_tag land.photos.first.key, class: "d-block w-100", style: "object-fit: cover; height: 350px;"  %>
+                    </div>
+                  <% land.photos.reverse.take(4).each do |photo| %>
+                    <div class="carousel-item">
+                      <%= cl_image_tag photo.key, class: "d-block w-100", style: "object-fit: cover; height: 350px;"  %>
+                    </div>
+                  <% end %>
+                <% elsif land.images.any? %>
+                    <div class="carousel-item active">
+                      <%= image_tag land.images.first, class: "d-block w-100", style: "object-fit: cover; height: 350px;" %>
+                    </div>
+                  <% land.images.reverse.take(4).each do |image| %>
+                    <div class="carousel-item">
+                      <%= image_tag image, class: "d-block w-100", style: "object-fit: cover; height: 350px;" %>
+                    </div>
+                  <% end %>
+
                 <% else %>
-                  <p>No Image</p>
-              <% end %>
+                    <p>No Image</p>
+                <% end %>
+              </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= land.id %>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= land.id %>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
                 <div class="card-planet-infos">
                   <div>
                     <h2><strong><%= land.planet_name %></strong></h2>
