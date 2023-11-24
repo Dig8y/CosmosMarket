@@ -3,6 +3,7 @@
   <% if current_user.species == 'martian' %>
     <div class="dash-header">
       <div>
+      <p><%= link_to "View all planets", lands_path %></p>
         <h2>Welcome <%= current_user.first_name %></h2>
         <h5>Species: <%= current_user.species %></h5>
       </div>
@@ -176,4 +177,7 @@
       </div>
     </div>
   </div>
+</div>
+<div style="margin-top:100px">
+  <%= render 'pages/footer' %>
 </div>
