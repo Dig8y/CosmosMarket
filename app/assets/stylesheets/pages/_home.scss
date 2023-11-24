@@ -102,24 +102,19 @@ a:link {
 }
 
 .middle-section-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #ffffff;
-  width: 300px;
-  height: 300px;
-  text-align: center;
-  align-items: center;
-  border-radius: 10px;
-  padding: 48px;
+    /* Adjust width, margin, padding as necessary */
+    width: 300px; /* Example width, adjust as needed */
+    margin: 10px; /* Example margin, adjust as needed */
+    /* Other properties */
   p {
     font-size: 16px;
   }
 }
-
 .middle-section-card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* or space-around */
+  flex-wrap: nowrap; /* Optional, prevents wrapping */
+  /* Add more properties if needed */
 }
 
 .home-planet-img {
@@ -137,4 +132,8 @@ a:link {
   bottom: 35px;
   transform: rotate(45deg);
   size: 30px;
+}
+
+.homepage-reviews{
+  background-color: white;
 }
