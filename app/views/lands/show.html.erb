@@ -1,7 +1,7 @@
-<% planet = @land.address.split(' ').last %>
+
 <div class="container" style="margin-top: 26px">
 <%= link_to 'Go Back To All Planets', lands_path, class: 'small-text-link' %>
-  <h2 class="show-header">Wonderful Retreat on <%= planet %></h2>
+  <h2 class="show-header">Wonderful Retreat on <%= @land.planet_name %></h2>
   <div class='row mb-4'>
     <div class='col-6'>
       <% if @land.photos.attached? %>
@@ -26,7 +26,7 @@
     <div class="col-7">
       <div class="d-flex justify-content-between">
         <div>
-          <h4 class="showpage-titler">Stay on <%= planet %>, Milky Way</h4>
+          <h4 class="showpage-titler">Stay on <%= @land.planet_name %>, Milky Way</h4>
           <h6>20 guests - 2 Bedrooms - 2 Beds - 2 Bathrooms</h6>
         </div>
           <h6 style="align-self: flex-end;"><strong>§<%= @land.price.to_i %></strong> Per night</h6>
