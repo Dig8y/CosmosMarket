@@ -91,7 +91,7 @@
         <h5>Species: <%= current_user.species %></h5>
       </div>
       <%= link_to lands_path do %>
-        <h4 class="btn btn-create">Find another booking</h4>
+        <h4 class="btn-create">Find another booking</h4>
       <% end %>
 
     </div>
@@ -104,10 +104,10 @@
           <div class="booking-card">
             <div class="booking-card-img" style="background-image: url(<%=booking.land.images[0]%>)"></div>
             <div class="booking-card-top-info">
-              <div>
-                <p><%= booking.land.address %></p>
-                <p><%= booking.land.local_attractions %></p>
-              </div>
+                <div>
+                  <p><%= booking.land.address %></p>
+                  <p><strong><%= booking.land.planet_name %></strong></p>
+                </div>
               <div class="booking-date-info">
                 <p>From: <%= booking.booking_start_date %></p>
                 <p>To: <%= booking.booking_end_date %></p>
