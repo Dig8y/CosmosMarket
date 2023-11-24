@@ -17,7 +17,13 @@
     <% end %>
   </div>
 </div>
+<% if user_signed_in? && current_user.species == 'human' %>
     <p class="call-to-action">Book these amazing planets</p>
+<% elsif user_signed_in? && current_user.species == 'martian'  %>
+    <p class="call-to-action">Planets available to conquer</p>
+<% else %>
+    <p class="call-to-action">Book these amazing planets</p>
+  <% end %>
 <div class="container" style="margin-top: 30px">
   <div class="cards-grid">
       <% @lands.each do |land| %>
