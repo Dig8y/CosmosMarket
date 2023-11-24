@@ -39,20 +39,23 @@
   <div class="container">
     <h2>Stay on.....</h2>
     <div class="middle-section-card-container">
-        <% @lands.each do |land| %>
-        <div class="card-planet">
+      <div class="container card-planet">
         <div class = "card-planet-names">
-        <%= land.planet_name %>
+          <h3>Neptune</h3>
+           <%= image_tag "Neptune.png", height: 300 %>
         </div>
-          <% if land.photos.attached? %>
-            <%= cl_image_tag land.photos.first.key, class: "home-planet-img" %>
-          <% elsif land.images %>
-            <%= image_tag (land.images.first), class: "home-planet-img" %>
-          <% end %>
+        <div class = "card-planet-names">
+          <h3>Mars</h3>
+           <%= image_tag "Mars.png", height: 300 %>
+        </div>
+        <div class = "card-planet-names">
+          <h3>Uranus</h3>
+           <%= image_tag "Uranus.png", height: 300 %>
+        </div>
+
 
             </div>
 
-      <% end %>
 
     </div>
   </div>
