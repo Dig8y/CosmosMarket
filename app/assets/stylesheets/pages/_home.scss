@@ -63,8 +63,7 @@ a:link {
 }
 
 .middle-section {
-  background-color: rgb(112, 112, 249);
-  box-shadow: 10px 10px 5px rgba(15, 2, 2, 0.2);
+  background-color: white;
 }
 
 .bottom-section {
@@ -73,7 +72,6 @@ a:link {
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 10px 10px 5px rgba(15, 2, 2, 0.2);
   h4 {
     margin-bottom: 50px;
   }
@@ -121,10 +119,10 @@ a:link {
   }
 }
 .middle-section-card-container {
-  display: flex;
-  justify-content: space-between; /* or space-around */
-  flex-wrap: nowrap; /* Optional, prevents wrapping */
-  /* Add more properties if needed */
+  display: grid;
+  /* justify-content: space-between; */
+  /* flex-wrap: nowrap; */
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .home-planet-img {
