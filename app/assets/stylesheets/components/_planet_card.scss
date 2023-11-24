@@ -5,6 +5,16 @@
   grid-gap: 16px;
 }
 .card-planet {
+  height: 100%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 30px;
+  border-radius: 14px;
+  margin: 20px;
+}
+
+.card-planet-home {
   display: flex;
   justify-content: space-evenly;
   height: 100%;
