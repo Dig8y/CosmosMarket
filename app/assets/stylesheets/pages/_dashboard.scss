@@ -60,6 +60,7 @@
   color: white;
   transition: 0.3s ease;
   margin: 0;
+  border: none;
 }
 
 .btn-create:hover {
@@ -83,4 +84,10 @@
   &:last-child {
     align-items: flex-end;
   }
+ }
+
+ .button-box {
+  height: 40px;
+  align-self: flex-end;
+  margin-bottom: 42px
  }
